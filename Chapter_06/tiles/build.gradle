@@ -2,6 +2,9 @@ apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
 
 dependencies {
 	compile "org.springframework:spring-webmvc:$springVersion"
@@ -9,6 +12,12 @@ dependencies {
 	compile "com.h2database:h2:$h2Version"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
 	compile "org.apache.commons:commons-lang3:$commonsLangVersion"
+
+	//javaee api
+	compile "javax.xml.bind:jaxb-api:$jaxbVersion"
+	compile "com.sun.xml.bind:jaxb-core:$jaxbVersion"
+	compile "com.sun.xml.bind:jaxb-impl:$jaxbVersion"
+	compile "javax.activation:activation:$activationVersion"
 
 	compile "org.slf4j:slf4j-api:$slf4jVersion"
 	compile "org.slf4j:jcl-over-slf4j:$slf4jVersion"
@@ -42,9 +51,13 @@ repositories {
 	mavenCentral()
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+wrapper{
+	gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '1.8'
+//}
 
 war {
         baseName = 'spittr'

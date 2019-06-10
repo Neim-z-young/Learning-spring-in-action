@@ -1,3 +1,5 @@
+import java.sql.Wrapper
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -19,6 +21,10 @@ dependencies {
     testCompile "com.github.stefanbirkner:system-rules:${systemRulesVersion}"
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+wrapper{
+    gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '1.11'
+//}

@@ -1,0 +1,72 @@
+<web-app>
+
+<!--  xml配置+web.xml-->
+<!--  用来创建应用上下文中的bean，由root context路径确定配置文件-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+<!--  root context配置文件路径，上面的<listenser>将加载本参数-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring/root-context.xml</param-value>
+  </context-param>
+
+<!--  配置DispatcherServlet-->
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+<!--      servlet context配置文件路径-->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+    </init-param>
+<!--    tomcat加载时的优先级-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+<!--  DispatcherServlet映射到的web url路径-->
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+<!--&lt;!&ndash;  java配置+web.xml&ndash;&gt;-->
+<!--  &lt;!&ndash;  用来创建应用上下文中的bean，由root context路径确定配置文件&ndash;&gt;-->
+<!--  <listener>-->
+<!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--  </listener>-->
+
+<!--&lt;!&ndash;  配置listener采用java配置&ndash;&gt;-->
+<!--  <context-param>-->
+<!--    <param-name>contextClass</param-name>-->
+<!--    <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+<!--  </context-param>-->
+<!--  &lt;!&ndash;  root context配置类，上面的<listenser>将加载本参数&ndash;&gt;-->
+<!--  <context-param>-->
+<!--    <param-name>contextConfigLocation</param-name>-->
+<!--    <param-value>spittr.config.RootConfig</param-value>-->
+<!--  </context-param>-->
+
+<!--  &lt;!&ndash;  配置DispatcherServlet&ndash;&gt;-->
+<!--  <servlet>-->
+<!--    <servlet-name>dispatcher</servlet-name>-->
+<!--    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+<!--    <init-param>-->
+<!--      <param-name>contextClass</param-name>-->
+<!--      <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+<!--      &lt;!&ndash;      servlet context配置类&ndash;&gt;-->
+<!--      <param-name>contextConfigLocation</param-name>-->
+<!--      <param-value>spittr.web.WebConfig</param-value>-->
+<!--    </init-param>-->
+<!--    &lt;!&ndash;    tomcat加载时的优先级&ndash;&gt;-->
+<!--    <load-on-startup>1</load-on-startup>-->
+<!--  </servlet>-->
+
+<!--  &lt;!&ndash;  DispatcherServlet映射到的web url路径&ndash;&gt;-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>dispatcher</servlet-name>-->
+<!--    <url-pattern>/</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+</web-app>

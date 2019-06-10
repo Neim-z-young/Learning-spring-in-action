@@ -9,7 +9,13 @@ dependencies {
     compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
     compile "org.apache.commons:commons-lang3:$commonsLangVersion"
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
-    
+
+    //javaee api
+    compile "javax.xml.bind:jaxb-api:$jaxbVersion"
+    compile "com.sun.xml.bind:jaxb-core:$jaxbVersion"
+    compile "com.sun.xml.bind:jaxb-impl:$jaxbVersion"
+    compile "javax.activation:activation:$activationVersion"
+
     compile "javax.servlet:jstl:$jstlVersion"
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
     providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
@@ -29,9 +35,13 @@ repositories {
     mavenCentral()
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+wrapper {
+    gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '2.1'
+//}
 
 war {
         baseName = 'spittr'

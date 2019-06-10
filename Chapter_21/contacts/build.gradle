@@ -1,32 +1,56 @@
+
 buildscript {
 	repositories {
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
 		mavenCentral()
 	}
 
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.5.RELEASE")
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'spring-boot'
+//apply plugin: 'java'
+//apply plugin: 'spring-boot'
 
-jar {
+plugins{
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+//保证gradle能自动管理依赖版本
+apply plugin: 'io.spring.dependency-management'
+
+war {
 	baseName = 'contacts'
 	version  = '0.1.0'
 }
 
 repositories {
+		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
 	mavenCentral()
 }
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-jdbc")
-	compile("org.thymeleaf:thymeleaf-spring4")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.thymeleaf:thymeleaf-spring5")
 	compile("com.h2database:h2")
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '2.0'
+//dependencies {
+//	compile("org.springframework.boot:spring-boot-starter-web:$springbootVersion")
+//	compile("org.springframework.boot:spring-boot-starter-jdbc:$springbootVersion")
+//	compile("org.thymeleaf:thymeleaf-spring5:$thymeleafVersion")
+//	compile("com.h2database:h2:$h2Version")
+//}
+
+wrapper {
+	gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//	gradleVersion = '2.0'
+//}

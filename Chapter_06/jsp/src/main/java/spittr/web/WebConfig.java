@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -38,10 +39,22 @@ public class WebConfig extends WebMvcConfigurerAdapter {
   
   @Bean
   public MessageSource messageSource() {
-    ReloadableResourceBundleMessageSource messageSource = 
+      /**
+       * 这个类无前缀时的路径为web根目录
+       */
+    ReloadableResourceBundleMessageSource messageSource =
         new ReloadableResourceBundleMessageSource();
-    messageSource.setBasename("file:///Users/habuma/messages");
+    messageSource.setBasename("WEB-INF/messages-in-webroot");
     messageSource.setCacheSeconds(10);
+
+      /**
+       * 这个类默认的路径为classpath
+       */
+//    ResourceBundleMessageSource messageSource =
+//            new ResourceBundleMessageSource();
+//    messageSource.setBasename("messages-in-classpath");
+
+      messageSource.setDefaultEncoding("UTF-8");
     return messageSource;
   }
  

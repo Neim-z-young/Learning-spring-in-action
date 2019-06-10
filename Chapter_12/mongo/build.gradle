@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
     mavenCentral()
 }
 
@@ -9,10 +10,21 @@ dependencies {
     compile("org.springframework:spring-context:4.0.6.RELEASE")
     compile("org.springframework.data:spring-data-mongodb:1.5.2.RELEASE")
     compile("org.mongodb:mongo-java-driver:2.11.3") // needed so that fongo will work
+
+    //javaee api
+    compile "javax.xml.bind:jaxb-api:$jaxbVersion"
+    compile "com.sun.xml.bind:jaxb-core:$jaxbVersion"
+    compile "com.sun.xml.bind:jaxb-impl:$jaxbVersion"
+    compile "javax.activation:activation:$activationVersion"
+
     testCompile("junit:junit-dep:4.11")
     testCompile("org.springframework:spring-test:4.0.6.RELEASE")
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+wrapper {
+    gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '2.0'
+//}

@@ -1,6 +1,9 @@
 package sia.knights;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+
 import java.io.PrintStream;
+import java.nio.ByteBuffer;
 
 public class Minstrel {
 
@@ -15,6 +18,7 @@ public class Minstrel {
   }
 
   public void singAfterQuest() {
+
     stream.println("Tee hee hee, the brave knight " +
     		"did embark on a quest!");
   }

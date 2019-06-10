@@ -8,6 +8,7 @@ jar {
 }
 
 repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
     mavenLocal()
     mavenCentral()
 }
@@ -19,6 +20,10 @@ dependencies {
     testCompile "com.github.stefanbirkner:system-rules:${systemRulesVersion}"
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+wrapper {
+    gradleVersion = '5.4'
 }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '1.11'
+//}

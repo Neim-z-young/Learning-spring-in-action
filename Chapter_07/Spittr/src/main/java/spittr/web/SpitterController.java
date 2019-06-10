@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import spittr.Spitter;
 import spittr.data.SpitterRepository;
 
@@ -44,7 +46,7 @@ public class SpitterController {
 //    if (errors.hasErrors()) {
 //      return "registerForm";
 //    }
-//    
+//
 //    spitterRepository.save(spitter);
 //    redirectAttributes.addAttribute("username", spitter.getUsername());
 //    redirectAttributes.addFlashAttribute(spitter);

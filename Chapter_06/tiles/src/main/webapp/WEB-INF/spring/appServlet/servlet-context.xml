@@ -10,16 +10,36 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--  与@EnableWebMvc注解的功能相同-->
   <annotation-driven />
 
-  <context:component-scan base-package="spitter" />
+<!--  加载servlet context bean-->
+  <context:component-scan base-package="spittr.web" />
 
-  <beans:bean
-    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <beans:property name="prefix" value="/WEB-INF/views/" />
-    <beans:property name="suffix" value=".jsp" />
+<!--  <beans:bean-->
+<!--    class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--    <beans:property name="prefix" value="/WEB-INF/views/" />-->
+<!--    <beans:property name="suffix" value=".jsp" />-->
+<!--  </beans:bean>-->
+
+<!--  通过web.xml引用本文件-->
+<!--  配置servlet context-->
+  <default-servlet-handler/>
+
+<!--  使用tiles3的视图解析器-->
+  <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"></beans:bean>
+
+<!--  使用tiles3的配置,并且设置tiles.xml文件的扫描路径-->
+  <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    <beans:property name="definitions">
+      <beans:list>
+        <beans:value>/WEB-INF/layout/tiles.xml</beans:value>
+        <beans:value>/WEB-INF/views/**/tiles.xml</beans:value>
+      </beans:list>
+    </beans:property>
   </beans:bean>
 
+<!--  定义资源位置-->
   <resources mapping="/resources/**" location="/resources/" />
 
   <!-- 
